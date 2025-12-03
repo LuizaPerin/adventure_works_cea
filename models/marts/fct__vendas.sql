@@ -19,7 +19,6 @@ with
         select
             /* Primary key */
             {{ dbt_utils.generate_surrogate_key(['sales_header.sales_order_id', 'sales_detail.product_id']) }} as sk_salesline
-
             /* Foreign keys and IDs */
             , sales_header.sales_order_id
             , sales_header.customer_id
@@ -27,11 +26,9 @@ with
             , sales_header.credit_card_id
             , sales_header.sales_person_id
             , sales_detail.product_id
-
             /* Timestamps */
             , sales_header.order_date
-
-             /* Status and properties */
+            /* Status and properties */
             , sales_header.status as order_status
             , sales_detail.order_quantity
             , sales_detail.unit_price
